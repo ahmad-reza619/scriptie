@@ -1,0 +1,15 @@
+#!/bin/bash
+
+path="$1"
+shift # Remove the first argument (the path) from the argument list
+
+# Check if the '-d' option is provided
+if [[ "$1" == "-d" ]]; then
+	local data="$2"
+	shift 2 # Remove the '-d' option and its argument from the argument list
+	# Make the curl POST request with provided options, pipe to jq, and then to less
+	curl -X POST -H 'Content-Type: application/json' -d "$data" "localhost:3000$path" "$@" | jq | less
+else
+	# Make the curl GET request with provided options, pipe to jq, and then to less
+	curl -H 'Content-Type: application/json' "localhost:3000$path" "$@" | jq | less
+fi
