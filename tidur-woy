@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Define an array of strings
+kata_mutiara=("Woy TIDUR" "Hoamz" "Besok Mulung Woy")
+
+# Pick a random string from the array
+random_mutiara=$(shuf -n 1 -e "${kata_mutiara[@]}")
+
+notify-send $random_mutiara
+
+shutdown
