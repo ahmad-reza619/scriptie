@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Define the directory where screenshots are saved
+screenshot_dir="$HOME/Desktop"
+
+# Define the maximum age of screenshots to keep (in days)
+max_age=7
+
+# Change directory to the desktop
+cd "$screenshot_dir" || exit
+
+# Find and delete old screenshots
+find . \( -name "Screen Shot*.png" -o -name "Screen Shot*.jpg" \) -type f -mtime +$max_age -delete
+
+echo "Old screenshots deleted."
