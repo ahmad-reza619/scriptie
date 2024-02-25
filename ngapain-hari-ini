@@ -1,3 +1,4 @@
 #!/bin/bash
 
-find $1 -type d -name '.git' -exec sh -c 'cd "{}" && cd .. && echo "===== Repository: ${PWD##*/} =====" && git log --since="6am" --author="$(git config user.name)" --pretty=format:"%ar : %s" --decorate=auto' \;
+echo $1
+find $1 -type d -name '.git' -exec sh -c 'cd "{}" && cd .. && echo "===== Repository: ${PWD##*/} =====" && git log --since="midnight" --author="$(git config user.name)" --pretty=format:"%ar : %s" --decorate=auto' \;
